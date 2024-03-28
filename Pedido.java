@@ -18,4 +18,8 @@ public class Pedido {
         itens.add(item);
     }
 
+
+    public PedidoItem[] getItens() {
+        return new PedidoItem[0];
+    }
 }

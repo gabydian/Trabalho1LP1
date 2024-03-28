@@ -1,8 +1,4 @@
 package Trabalho1.src;
-import Trabalho1.src.Pedido;
-import Trabalho1.src.Produto;
-import Trabalho1.src.Cliente;
-import Trabalho1.src.Vendedor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +34,33 @@ public class Loja {
         }
     }
 
+    public double calcularTotalBrutoVendas() {
+        double total = 0.0;
+        for (Pedido pedido : pedidos) {
+            for (PedidoItem item : pedido.getItens()) {
+                total += item.getProduto().getValor() * item.getQuantidade();
+            }
+        }
+        return total;
+    }
+
+    public double calcularTotalLiquidoVendas() {
+        double totalLiquido = calcularTotalBrutoVendas();
+        for (Vendedor vendedor : vendedores) {
+            double comissaoTotalVendedor = 0.0;
+            for (Pedido pedido : pedidos) {
+                for (PedidoItem item : pedido.getItens()) {
+                    if (item.getProduto().getVendedor().equals(vendedor)) {
+                        comissaoTotalVendedor += item.getProduto().getValor() * item.getQuantidade() * vendedor.getPercentualComissao();
+                    }
+                }
+            }
+            totalLiquido -= comissaoTotalVendedor;
+        }
+        return totalLiquido;
+    }
+
+
     public void listarVendedores() {
         Collections.sort(vendedores);
         for (Vendedor vendedor : vendedores) {
@@ -45,4 +68,10 @@ public class Loja {
         }
     }
 
+    public void main() {
+    }
+
+    public void adicionarPedido(Pedido pedido) {
+
+    }
 }

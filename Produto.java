@@ -12,12 +12,13 @@ public class Produto implements Comparable<Produto>{
     private List<Produto> produtos = new ArrayList<>();
 
 
-    public Produto(String nome, double valor, int quantidadeMaximas, int codigo) {
+    public Produto(String nome, double valor, int quantidadeMaximas) {
         this.nome = nome;
         this.valor = valor;
         this.codigo = codigo;
         this.quantidadeMaximas = quantidadeMaximas;
     }
+
 
     public String getNome() {
         return nome;
@@ -40,4 +41,7 @@ public class Produto implements Comparable<Produto>{
         return this.nome.compareTo(outroProduto.getNome());
     }
 
+    public Object getVendedor() {
+        return null;
+    }
 }
