@@ -39,4 +39,5 @@ public class Vendedor extends Pessoa implements Comparable<Vendedor> {
     String getNome() {
         return nome;
     }
+
 }

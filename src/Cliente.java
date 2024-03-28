@@ -22,5 +22,6 @@ public class Cliente implements Comparable<Cliente> {
     public String getEndereco() {
         return endereco;
     }
+
 }
 

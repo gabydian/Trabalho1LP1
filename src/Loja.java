@@ -44,4 +44,5 @@ public class Loja {
             System.out.println(vendedor.getNome());
         }
     }
+
 }
