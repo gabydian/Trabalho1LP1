@@ -68,9 +68,6 @@ public class Loja {
         }
     }
 
-    public void main() {
-    }
-
     public void adicionarPedido(Pedido pedido) {
 
     }
