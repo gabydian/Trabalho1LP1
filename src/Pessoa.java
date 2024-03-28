@@ -1,5 +1,7 @@
+package Trabalho1.src;
+
 public class Pessoa {
-    private String nome;
+    String nome;
     private String cpf;
 
     public Pessoa(){
