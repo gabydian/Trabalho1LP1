@@ -39,4 +39,5 @@ public class Produto implements Comparable<Produto>{
     public int compareTo(Produto outroProduto) {
         return this.nome.compareTo(outroProduto.getNome());
     }
+
 }
