@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PedidoItem{
-    private Produto produto;
+    private Trabalho1.src.Produto produto;
     private int quantidade;
     private List<PedidoItem> itens = new ArrayList<>();
 
 
-    public PedidoItem(Produto produto, int quantidade) {
+    public PedidoItem(Trabalho1.src.Produto produto, int quantidade) {
         this.produto = produto;
         this.quantidade = quantidade;
     }
 
-    public Produto getProduto() {
+    public Trabalho1.src.Produto getProduto() {
         return produto;
     }
 
