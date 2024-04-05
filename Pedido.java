@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
+    private List<Pedido> pedidos = new ArrayList<>();
     private List<PedidoItem> itens = new ArrayList<>();
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
     public void adicionarItem(PedidoItem item) throws ItemDuplicadoException, QuantidadeNaoPermitadaException {
         for (PedidoItem it : itens) {
             if (it.getProduto().equals(item.getProduto())) {
@@ -20,6 +25,19 @@ public class Pedido {
 
 
     public PedidoItem[] getItens() {
-        return new PedidoItem[0];
+        return itens.toArray(new PedidoItem[0]);
+    }
+
+    public Produto getVendedor() {
+        return null;
+    }
+
+    public Produto getCliente() {
+        return null;
+    }
+
+    public int getId() {
+        int id = 0;
+        return id;
     }
 }

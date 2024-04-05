@@ -1,28 +1,31 @@
 package Trabalho1.src;
-
 import java.time.LocalDate;
 public class Vendedor extends Pessoa implements Comparable<Vendedor> {
+    private static final String cpf = null;
     private String matricula;
     private double percentualComissao;
     private LocalDate dtAdmissao;
+    public Vendedor(String matricula, double percentualComissao, LocalDate dtAdmissao) {
+        this.matricula = matricula;
+        this.percentualComissao = percentualComissao;
+        this.dtAdmissao = dtAdmissao;
+    }
 
-    public Vendedor(String nome,String cpf, String matricula, double percentualComissao, LocalDate dtAdmissao) {
+    public Vendedor(String nome, String cpf, String matricula, double percentualComissao, LocalDate dtAdmissao) {
         super(nome, cpf);
         this.matricula = matricula;
         this.percentualComissao = percentualComissao;
         this.dtAdmissao = dtAdmissao;
     }
 
-    public void setMatricula(String matricula) {
+    public Vendedor(String nome, double percentualComissao) {
+        super(nome, cpf);
         this.matricula = matricula;
-    }
-
-    public void setPercentualComissao(double percentualComissao) {
         this.percentualComissao = percentualComissao;
     }
 
-    public void setDtAdmissao(LocalDate dtAdmissao) {
-        this.dtAdmissao = dtAdmissao;
+    String getNome() {
+        return nome;
     }
 
     public String getMatricula() {
@@ -42,6 +45,5 @@ public class Vendedor extends Pessoa implements Comparable<Vendedor> {
         return outroVendedor.getNome().compareTo(this.nome);
 
     }
-
 }
 

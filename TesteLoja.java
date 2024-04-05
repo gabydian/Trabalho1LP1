@@ -1,8 +1,10 @@
 package Trabalho1.src;
 
-public class TesteLoja {
+import java.time.LocalDate;
+import java.util.Scanner;
 
-    public static void menuPricipal () {
+public class TesteLoja {
+    public static void menuPrincipal() {
         System.out.println("Escolha uma das opcoes abaixo: ");
         System.out.println("1. Cadastro de Produtos\n");
         System.out.println("2. Cadastro de Cliente\n");
@@ -15,68 +17,94 @@ public class TesteLoja {
         System.out.println("9. Total Bruto de Vendas\n");
         System.out.println("10. Total Liquido de Vendas\n");
         System.out.println("0. Sair");
+    }
 
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Loja loja = new Loja();
+
+        boolean sair = false;
+        while (!sair) {
+            menuPrincipal();
+            int opcao = teclado.nextInt();
+            teclado.nextLine(); // Limpar o buffer
+
+            switch (opcao) {
+                case 1:
+                    cadastrarProduto(teclado, loja);
+                    break;
+                case 2:
+                    cadastrarCliente(teclado, loja);
+                    break;
+                case 3:
+                    cadastrarVendedor(teclado, loja);
+                    break;
+                case 4:
+                    loja.listarClientes();
+                    break;
+                case 5:
+                    loja.listarProdutos();
+                    break;
+                case 6:
+                    loja.listarVendedores();
+                    break;
+                case 7:
+                    loja.listarPedidos();
+                    break;
+                case 8:
+                    loja.adicionarPedido();
+                    break;
+                case 9:
+                    System.out.println("Total Bruto de Vendas: R$" + loja.calcularTotalBrutoVendas());
+                    break;
+                case 10:
+                    System.out.println("Total Líquido de Vendas: R$" + loja.calcularTotalLiquidoVendas());
+                    break;
+                case 0:
+                    sair = true;
+                    break;
+                default:
+                    System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+            }
+        }
+
+        teclado.close();
+    }
+
+    private static void cadastrarProduto(Scanner teclado, Loja loja) {
+        System.out.println("Cadastro de Produtos:");
+        System.out.print("Digite o nome do produto: ");
+        String nomeProduto = teclado.nextLine();
+        System.out.print("Digite o valor do produto: ");
+        double valorProduto = teclado.nextDouble();
+        System.out.print("Digite a quantidade máxima do produto: ");
+        int quantidadeMaximaProduto = teclado.nextInt();
+        teclado.nextLine(); // Limpar o buffer
+        Produto produto = new Produto(nomeProduto, valorProduto, quantidadeMaximaProduto);
+        loja.cadastrarProduto(produto);
+    }
+
+    private static void cadastrarCliente(Scanner teclado, Loja loja) {
+        System.out.println("Cadastro de Clientes:");
+        System.out.print("Digite o nome do cliente: ");
+        String nomeCliente = teclado.nextLine();
+        System.out.print("Digite o endereço do cliente: ");
+        String enderecoCliente = teclado.nextLine();
+        Cliente cliente = new Cliente(nomeCliente, enderecoCliente);
+        loja.cadastrarCliente(cliente);
+    }
+
+    private static void cadastrarVendedor(Scanner teclado, Loja loja) {
+        System.out.println("Cadastro de Vendedores:");
+        System.out.print("Digite o nome do vendedor: ");
+        String nomeVendedor = teclado.nextLine();
+        System.out.print("Digite a comissão do vendedor (em decimal): ");
+        double percentualComissao = teclado.nextDouble();
+        teclado.nextLine(); // Limpar o buffer
+        String matricula = ""; // Coloque a lógica para capturar a matrícula
+        String cpfVendedor = ""; // Coloque a lógica para capturar o CPF do vendedor
+        LocalDate dtAdmissao = null; // Coloque a lógica para capturar a data de admissão
+        Vendedor vendedor = new Vendedor(nomeVendedor, cpfVendedor, matricula, percentualComissao, dtAdmissao);
+        loja.cadastrarVendedor(vendedor);
     }
 }
-
-//    public static void main(String[] args) {
-//        Scanner teclado = new Scanner(System.in);
-//
-//        // Criando uma loja
-//        Loja loja = new Loja() {
-//
-//
-//            // Cadastro de produtos
-//        System.out.println("Cadastro de Produtos:");
-//        System.out.println("Digite o nome do produto: ");
-//            String nomeProduto = teclado.nextLine();
-//        System.out.println("Digite o valor do produto: ");
-//            double valorProduto = teclado.nextDouble();
-//        System.out.println("Digite a quantidade máxima do produto: ");
-//            int quantidadeMaximaProduto = teclado.nextInt();
-//        teclado.nextInt();
-//            Produto produto = new Produto(nomeProduto, valorProduto, quantidadeMaximaProduto);
-//       cadastrarProduto.add(produto);
-//
-//            // Cadastro de clientes
-//        System.out.println("\nCadastro de Clientes:");
-//        System.out.println("Digite o nome do cliente: ");
-//            String nomeCliente = teclado.nextLine();
-//        System.out.println("Digite o endereço do cliente: ");
-//            String enderecoCliente = teclado.nextLine();
-//            Cliente cliente = new Cliente(nomeCliente, enderecoCliente);
-//        loja.cadastrarCliente(cliente);
-//
-//            // Cadastro de vendedores
-//        System.out.println("\nCadastro de Vendedores:");
-//        System.out.print("Digite o nome do vendedor: ");
-//            String nomeVendedor = teclado.nextLine();
-//        System.out.print("Digite a comissão do vendedor (em decimal): ");
-//            double percentualComissao = teclado.nextDouble();
-//            String matricula = "";
-//            LocalDate dtAdmissao = null;
-//            String cpfVendedor = null;
-//            Vendedor vendedor = new Vendedor(nomeVendedor, cpfVendedor, matricula, percentualComissao, dtAdmissao);
-//        loja.cadastrarVendedor(vendedor);
-//
-//            Pedido pedido = new Pedido();
-//        System.out.println("\nAdicionar itens ao pedido:");
-//
-//            // Adicionando o pedido à loja
-//        loja.adicionarPedido(pedido);
-//
-//
-//        System.out.println("\nListagem de produtos:");
-//        loja.listarProdutos();
-//
-//        System.out.println("\nListagem de clientes:");
-//        loja.listarClientes();
-//
-//        System.out.println("\nListagem de vendedores:");
-//        loja.listarVendedores();
-//
-//        System.out.println("\nTotal bruto de vendas: R$" + loja.calcularTotalBrutoVendas());
-//        System.out.println("Total líquido de vendas: R$" + loja.calcularTotalLiquidoVendas());
-//        }
-//
-//    }

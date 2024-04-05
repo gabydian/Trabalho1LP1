@@ -19,12 +19,17 @@ public class Produto implements Comparable<Produto>{
         this.quantidadeMaximas = quantidadeMaximas;
     }
 
-
     public String getNome() {
         return nome;
     }
 
-    public double getValor() {
+    public Vendedor getVendedor() {
+        Vendedor vendedor = getVendedor();
+        Vendedor vendedor1 = vendedor;
+        return vendedor1;
+    }
+
+        public double getValor() {
         return valor;
     }
 
@@ -40,11 +45,5 @@ public class Produto implements Comparable<Produto>{
     public int compareTo(Produto outroProduto) {
         return this.nome.compareTo(outroProduto.getNome());
     }
-
-    public Object getVendedor() {
-        return null;
-    }
-
-
 
 }
