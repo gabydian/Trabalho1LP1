@@ -40,4 +40,17 @@ public class Pedido {
         int id = 0;
         return id;
     }
+
+    public Pedido(List<Pedido> pedidos, List<PedidoItem> itens) {
+        this.pedidos = pedidos;
+        this.itens = itens;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public void setItens(List<PedidoItem> itens) {
+        this.itens = itens;
+    }
 }

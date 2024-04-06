@@ -29,7 +29,7 @@ public class Produto implements Comparable<Produto>{
         return vendedor1;
     }
 
-        public double getValor() {
+    public double getValor() {
         return valor;
     }
 

@@ -46,4 +46,3 @@ public class Vendedor extends Pessoa implements Comparable<Vendedor> {
 
     }
 }
-

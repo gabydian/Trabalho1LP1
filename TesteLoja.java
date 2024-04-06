@@ -27,7 +27,7 @@ public class TesteLoja {
         while (!sair) {
             menuPrincipal();
             int opcao = teclado.nextInt();
-            teclado.nextLine(); // Limpar o buffer
+            teclado.nextLine();
 
             switch (opcao) {
                 case 1:
@@ -52,7 +52,8 @@ public class TesteLoja {
                     loja.listarPedidos();
                     break;
                 case 8:
-                    loja.adicionarPedido();
+                    Pedido pedido = new Pedido();
+                    loja.adicionarPedido(Pedido pedido);
                     break;
                 case 9:
                     System.out.println("Total Bruto de Vendas: R$" + loja.calcularTotalBrutoVendas());
@@ -68,7 +69,6 @@ public class TesteLoja {
             }
         }
 
-        teclado.close();
     }
 
     private static void cadastrarProduto(Scanner teclado, Loja loja) {
@@ -79,7 +79,7 @@ public class TesteLoja {
         double valorProduto = teclado.nextDouble();
         System.out.print("Digite a quantidade máxima do produto: ");
         int quantidadeMaximaProduto = teclado.nextInt();
-        teclado.nextLine(); // Limpar o buffer
+        teclado.nextLine();
         Produto produto = new Produto(nomeProduto, valorProduto, quantidadeMaximaProduto);
         loja.cadastrarProduto(produto);
     }
@@ -100,10 +100,10 @@ public class TesteLoja {
         String nomeVendedor = teclado.nextLine();
         System.out.print("Digite a comissão do vendedor (em decimal): ");
         double percentualComissao = teclado.nextDouble();
-        teclado.nextLine(); // Limpar o buffer
-        String matricula = ""; // Coloque a lógica para capturar a matrícula
-        String cpfVendedor = ""; // Coloque a lógica para capturar o CPF do vendedor
-        LocalDate dtAdmissao = null; // Coloque a lógica para capturar a data de admissão
+        teclado.nextLine();
+        String matricula = "";
+        String cpfVendedor = "";
+        LocalDate dtAdmissao = null;
         Vendedor vendedor = new Vendedor(nomeVendedor, cpfVendedor, matricula, percentualComissao, dtAdmissao);
         loja.cadastrarVendedor(vendedor);
     }
